@@ -1,15 +1,17 @@
 package org.angeledugo.springcloud.msvc.product.services;
 
 import org.angeledugo.springcloud.msvc.product.entity.Product;
-import org.angeledugo.springcloud.msvc.product.respositories.ProductRepostory;
+import org.angeledugo.springcloud.msvc.product.respositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ProductServiceImpl implements ProductService {
     @Autowired
-    private ProductRepostory repository;
+    private ProductRepository repository;
 
     @Override
     public List<Product> getProducts() {
