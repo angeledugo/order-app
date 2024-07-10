@@ -12,6 +12,11 @@
   <artifactId>ecommerce-api</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
+
+  <modules>
+    <module>msvc-product</module>
+    <module>msvc-order</module>
+  </modules>
   <name>Archetype - curso-kubernetes</name>
   <url>http://maven.apache.org</url>
 </project>
