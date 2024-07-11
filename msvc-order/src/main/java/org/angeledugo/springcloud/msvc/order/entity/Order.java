@@ -3,6 +3,7 @@ package org.angeledugo.springcloud.msvc.order.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -13,8 +14,6 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private Long userId;
 
     @Column(nullable = false)
     private Long productId;
@@ -25,8 +24,15 @@ public class Order {
     @Column(nullable = false)
     private Double totalPrice;
 
-    @Column(nullable = false)
-    private Date orderDate;
+    @Column(nullable = true)
+    private LocalDateTime orderDate;
+
+    @PrePersist
+    protected void onCreate() {
+        if (orderDate == null) {
+            orderDate = LocalDateTime.now();
+        }
+    }
 
     public Long getId() {
         return id;
@@ -35,15 +41,6 @@ public class Order {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
     public Long getProductId() {
         return productId;
     }
@@ -68,11 +65,11 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
-    public Date getOrderDate() {
+    public LocalDateTime getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(LocalDateTime orderDate) {
         this.orderDate = orderDate;
     }
 }

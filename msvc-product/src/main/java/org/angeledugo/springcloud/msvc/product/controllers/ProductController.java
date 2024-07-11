@@ -11,6 +11,7 @@ import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/product")
 public class ProductController {
@@ -48,6 +49,7 @@ public class ProductController {
             Product productdb = o.get();
             productdb.setDescription(product.getDescription());
             productdb.setPrice(product.getPrice());
+            productdb.setQuantity(product.getQuantity());
 
             return ResponseEntity.status(HttpStatus.CREATED).body(service.saveProduct(productdb));
         }
