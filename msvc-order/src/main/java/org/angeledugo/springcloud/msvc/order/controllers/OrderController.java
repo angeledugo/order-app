@@ -1,5 +1,6 @@
 package org.angeledugo.springcloud.msvc.order.controllers;
 
+import org.angeledugo.springcloud.msvc.order.dto.OrderDto;
 import org.angeledugo.springcloud.msvc.order.entity.Order;
 import org.angeledugo.springcloud.msvc.order.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,11 @@ public class OrderController {
     @GetMapping
     public List<Order> getOrder() {
         return service.getAllOrders();
+    }
+
+    @GetMapping("/{id}")
+    public OrderDto getOrderById(@PathVariable Long id) {
+        return service.getOrderDetail(id);
     }
 
     @PostMapping

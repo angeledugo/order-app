@@ -1,5 +1,6 @@
 package org.angeledugo.springcloud.msvc.order.services;
 
+import org.angeledugo.springcloud.msvc.order.dto.OrderDto;
 import org.angeledugo.springcloud.msvc.order.entity.Order;
 
 import java.util.List;
@@ -9,6 +10,7 @@ public interface OrderService {
 
     List<Order> getAllOrders();
     Optional<Order> getOrderByid(Long id);
+    OrderDto getOrderDetail(Long id);
     Order saveOrder(Order order);
     void deleteOrder(Long id);
 }
